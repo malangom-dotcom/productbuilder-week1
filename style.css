@@ -135,12 +135,12 @@ input[type="number"] {
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* 모바일에서 한 줄 유지를 위해 nowrap으로 변경 */
 }
 
 .lotto-number {
     background-color: var(--number-bg);
-    color: white; /* 공통 글자색 흰색으로 변경 */
+    color: white;
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -153,6 +153,7 @@ input[type="number"] {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0; /* 크기 줄어듦 방지 */
 }
 
 /* 로또 번호 대역별 색상 */
@@ -243,13 +244,15 @@ input[type="number"] {
 
 @media (max-width: 600px) {
     .container {
-        margin: 1rem;
-        padding: 1.5rem;
+        margin: 1rem 0.5rem; /* 좌우 여백 축소 */
+        padding: 1.5rem 1rem; /* 내부 여백 축소 */
+        width: calc(100% - 1rem);
     }
     
     .lotto-number {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        width: 36px; /* 모바일에서 공 크기 축소 */
+        height: 36px;
+        font-size: 0.9rem;
+        margin: 0.15rem; /* 간격 축소 */
     }
 }
