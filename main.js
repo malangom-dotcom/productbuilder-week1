@@ -57,17 +57,13 @@ function displayLottoSet(numbers, delay) {
     wrapper.classList.add('lotto-set-wrapper');
     wrapper.style.opacity = '0';
     wrapper.style.transition = 'all 0.5s ease';
-    wrapper.style.marginBottom = '3rem';
+    wrapper.style.marginBottom = '4rem';
 
-    // 세트 라벨 추가 (A, B, C, D, E...)
+    // 세트 라벨 및 인덱스
     const setIndex = resultsContainer.children.length;
     const label = String.fromCharCode(65 + (setIndex % 26));
-    const title = document.createElement('div');
-    title.classList.add('set-title');
-    title.textContent = `세트 ${label}`;
-    wrapper.appendChild(title);
 
-    // 1. 숫자 공 표시
+    // 1. 숫자 공 표시 (상단에 작게 유지)
     const ballsElement = document.createElement('div');
     ballsElement.classList.add('lotto-set');
     numbers.forEach(number => {
@@ -83,10 +79,22 @@ function displayLottoSet(numbers, delay) {
     });
     wrapper.appendChild(ballsElement);
 
-    // 2. 패턴 그리드 표시 (실제 용지 스타일)
+    // 2. 실제 용지 스타일의 패턴 컨테이너
     const patternContainer = document.createElement('div');
     patternContainer.classList.add('lotto-pattern-container');
     
+    // 용지 상단 장식
+    const slipHeader = document.createElement('div');
+    slipHeader.classList.add('slip-header');
+    slipHeader.innerHTML = `
+        <div class="slip-title">6/45 LOTTO</div>
+        <div class="slip-slot-label">[ ${label} ] <span>수동/자동</span></div>
+    `;
+    patternContainer.appendChild(slipHeader);
+
+    const gridWrapper = document.createElement('div');
+    gridWrapper.classList.add('grid-wrapper');
+
     const grid = document.createElement('div');
     grid.classList.add('lotto-grid');
     
@@ -106,12 +114,19 @@ function displayLottoSet(numbers, delay) {
         grid.appendChild(cell);
     }
     
-    patternContainer.appendChild(grid);
-    patternContainer.appendChild(svg);
+    gridWrapper.appendChild(grid);
+    gridWrapper.appendChild(svg);
+    patternContainer.appendChild(gridWrapper);
+
+    // 용지 하단 장식 (바코드 느낌)
+    const slipFooter = document.createElement('div');
+    slipFooter.classList.add('slip-footer');
+    patternContainer.appendChild(slipFooter);
+
     wrapper.appendChild(patternContainer);
     resultsContainer.appendChild(wrapper);
 
-    // 애니메이션 및 선 그리기 (렌더링 후 좌표 계산 필요)
+    // 애니메이션 및 선 그리기
     setTimeout(() => {
         wrapper.style.opacity = '1';
         
