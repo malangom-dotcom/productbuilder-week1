@@ -244,15 +244,16 @@ input[type="number"] {
 
 @media (max-width: 600px) {
     .container {
-        margin: 1rem 0.5rem; /* 좌우 여백 축소 */
-        padding: 1.5rem 1rem; /* 내부 여백 축소 */
-        width: calc(100% - 1rem);
+        margin: 1rem 0.25rem; /* 외부 여백 최소화 */
+        padding: 1.5rem 0.5rem; /* 내부 좌우 여백 최소화 */
+        width: calc(100% - 0.5rem);
+        box-sizing: border-box;
     }
     
     .lotto-number {
-        width: 36px; /* 모바일에서 공 크기 축소 */
-        height: 36px;
-        font-size: 0.9rem;
-        margin: 0.15rem; /* 간격 축소 */
+        width: 42px; /* 공 크기 확대 (36px -> 42px) */
+        height: 42px;
+        font-size: 1.1rem;
+        margin: 0.1rem; /* 공 사이 간격 최소화 */
     }
 }
