@@ -5,6 +5,17 @@
     --container-bg: #fff;
     --button-hover-color: #357ABD;
     --shadow-color: rgba(0, 0, 0, 0.1);
+    --number-bg: #eee;
+}
+
+[data-theme="dark"] {
+    --primary-color: #64b5f6;
+    --background-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --container-bg: #2d2d2d;
+    --button-hover-color: #42a5f5;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --number-bg: #444;
 }
 
 body {
@@ -16,6 +27,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -26,11 +38,31 @@ body {
     text-align: center;
     max-width: 400px;
     width: 90%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 h1 {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--shadow-color);
 }
 
 .input-container {
@@ -49,6 +81,8 @@ input[type="number"] {
     width: 60px;
     text-align: center;
     font-size: 1rem;
+    background-color: var(--container-bg);
+    color: var(--text-color);
 }
 
 #generate-btn {
@@ -78,7 +112,8 @@ input[type="number"] {
 }
 
 .lotto-number {
-    background-color: #eee;
+    background-color: var(--number-bg);
+    color: var(--text-color);
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -89,4 +124,5 @@ input[type="number"] {
     font-weight: bold;
     font-size: 1.1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
