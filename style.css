@@ -242,84 +242,78 @@ input[type="number"] {
     text-decoration: underline;
 }
 
-.winning-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    gap: 0.5rem;
+.lotto-pattern-container {
+    margin: 1.5rem auto;
+    max-width: 350px;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    position: relative;
 }
 
-.draw-label {
-    font-weight: bold;
-    font-size: 0.9rem;
-    color: #777;
+[data-theme="dark"] .lotto-pattern-container {
+    background: #2d2d2d;
+    border-color: #444;
 }
 
-.winning-balls {
+.lotto-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+.grid-cell {
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.25rem;
-}
-
-.ball-small {
-    width: 28px;
-    height: 28px;
     font-size: 0.8rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    color: #ccc;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+[data-theme="dark"] .grid-cell {
+    color: #555;
+    border-color: #3d3d3d;
+}
+
+.grid-cell.marked {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    z-index: 2;
     font-weight: bold;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.bonus-plus {
-    font-weight: bold;
-    margin: 0 0.2rem;
-    color: #777;
-}
-
-.table-container {
-    overflow-x: auto;
-    margin: 1rem 0;
-}
-
-.prize-table {
+.pattern-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    border-collapse: collapse;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.pattern-line {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.5;
+}
+
+.set-title {
     font-size: 0.9rem;
-    min-width: 300px;
-}
-
-.prize-table th, .prize-table td {
-    padding: 0.75rem 0.5rem;
-    border-bottom: 1px solid var(--shadow-color);
-    text-align: center;
-}
-
-.prize-table th {
-    background-color: var(--nav-bg);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
-
-.rank-badge {
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-weight: bold;
-    font-size: 0.8rem;
-}
-
-.rank-1 { background-color: #fbc400; color: #fff; }
-.rank-2 { background-color: #69c8f2; color: #fff; }
-.rank-3 { background-color: #ff7272; color: #fff; }
-.rank-4 { background-color: #aaaaaa; color: #fff; }
-.rank-5 { background-color: #b0d840; color: #fff; }
-.rank-none { background-color: #eee; color: #777; }
-
-[data-theme="dark"] .rank-none { background-color: #444; color: #999; }
 
 .disclaimer-text {
     font-size: 0.8rem;
@@ -343,7 +337,13 @@ input[type="number"] {
         margin: 0.1rem; /* 공 사이 간격 최소화 */
     }
 
-    .prize-table {
-        font-size: 0.8rem;
+    .lotto-pattern-container {
+        max-width: 280px;
+        padding: 0.5rem;
+    }
+
+    .grid-cell {
+        font-size: 0.7rem;
+        gap: 2px;
     }
 }
