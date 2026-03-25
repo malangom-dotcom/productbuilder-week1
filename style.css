@@ -242,6 +242,92 @@ input[type="number"] {
     text-decoration: underline;
 }
 
+.winning-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+}
+
+.draw-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.winning-balls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.ball-small {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.bonus-plus {
+    font-weight: bold;
+    margin: 0 0.2rem;
+    color: #777;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+.prize-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 300px;
+}
+
+.prize-table th, .prize-table td {
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--shadow-color);
+    text-align: center;
+}
+
+.prize-table th {
+    background-color: var(--nav-bg);
+    color: var(--primary-color);
+}
+
+.rank-badge {
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.rank-1 { background-color: #fbc400; color: #fff; }
+.rank-2 { background-color: #69c8f2; color: #fff; }
+.rank-3 { background-color: #ff7272; color: #fff; }
+.rank-4 { background-color: #aaaaaa; color: #fff; }
+.rank-5 { background-color: #b0d840; color: #fff; }
+.rank-none { background-color: #eee; color: #777; }
+
+[data-theme="dark"] .rank-none { background-color: #444; color: #999; }
+
+.disclaimer-text {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: left;
+    margin-top: 1rem;
+}
+
 @media (max-width: 600px) {
     .container {
         margin: 1rem 0.25rem; /* 외부 여백 최소화 */
@@ -255,5 +341,9 @@ input[type="number"] {
         height: 42px;
         font-size: 1.1rem;
         margin: 0.1rem; /* 공 사이 간격 최소화 */
+    }
+
+    .prize-table {
+        font-size: 0.8rem;
     }
 }
