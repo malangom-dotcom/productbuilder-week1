@@ -23,12 +23,24 @@ function updateToggleIcon(theme) {
 
 generateBtn.addEventListener('click', () => {
     const numSets = parseInt(setsInput.value);
-    resultsContainer.innerHTML = '';
-
-    for (let i = 0; i < numSets; i++) {
-        const numbers = generateLottoNumbers();
-        displayLottoSet(numbers);
+    
+    if (isNaN(numSets) || numSets < 1 || numSets > 10) {
+        alert('1에서 10 사이의 숫자를 입력해주세요.');
+        return;
     }
+
+    resultsContainer.innerHTML = '';
+    generateBtn.disabled = true;
+    generateBtn.textContent = '번호 추출 중...';
+
+    setTimeout(() => {
+        for (let i = 0; i < numSets; i++) {
+            const numbers = generateLottoNumbers();
+            displayLottoSet(numbers, i * 100);
+        }
+        generateBtn.disabled = false;
+        generateBtn.textContent = '번호 생성하기';
+    }, 500);
 });
 
 function generateLottoNumbers() {
@@ -40,9 +52,12 @@ function generateLottoNumbers() {
     return Array.from(numbers).sort((a, b) => a - b);
 }
 
-function displayLottoSet(numbers) {
+function displayLottoSet(numbers, delay) {
     const setElement = document.createElement('div');
     setElement.classList.add('lotto-set');
+    setElement.style.opacity = '0';
+    setElement.style.transform = 'translateY(10px)';
+    setElement.style.transition = 'all 0.5s ease';
 
     numbers.forEach(number => {
         const numberElement = document.createElement('div');
@@ -52,4 +67,9 @@ function displayLottoSet(numbers) {
     });
 
     resultsContainer.appendChild(setElement);
+
+    setTimeout(() => {
+        setElement.style.opacity = '1';
+        setElement.style.transform = 'translateY(0)';
+    }, delay);
 }

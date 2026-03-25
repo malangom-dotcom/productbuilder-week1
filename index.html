@@ -1,65 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>로또 번호 생성기 - 무료 고품질 번호 조합 및 통계 가이드</title>
+    <meta name="description" content="무료로 로또 번호를 생성하고, 로또 당첨 확률을 높이는 번호 조합 전략과 통계 가이드를 확인하세요. 사용자 친화적인 로또 번호 추출기입니다.">
+    <meta name="keywords" content="로또번호생성기, 로또번호추출기, 무료로또, 로또당첨확률, 로또통계, 로또번호추천">
     <meta name="google-adsense-account" content="ca-pub-6611249769817567">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6611249769817567"
      crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">🌙</button>
-        <h1>Lotto Number Generator</h1>
-        <div class="input-container">
-            <label for="sets">Number of sets:</label>
-            <input type="number" id="sets" value="5" min="1" max="10">
-        </div>
-        <button id="generate-btn">Generate</button>
-        <div id="results-container"></div>
+    <header>
+        <nav class="navbar">
+            <div class="logo">LottoGen</div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환">🌙</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="generator-section">
+            <h1>로또 번호 생성기</h1>
+            <p class="subtitle">행운의 번호를 지금 바로 추출해보세요.</p>
+            <div class="input-container">
+                <label for="sets">생성할 세트 수 (1-10):</label>
+                <input type="number" id="sets" value="5" min="1" max="10">
+            </div>
+            <button id="generate-btn">번호 생성하기</button>
+            <div id="results-container"></div>
+        </section>
         
         <hr class="divider">
+
+        <article class="content-article">
+            <h2>로또 번호 선택 가이드</h2>
+            <p>로또 번호를 선택할 때 많은 사람들이 자신만의 규칙을 사용합니다. 통계적으로 모든 숫자가 나올 확률은 동일하지만, 균형 잡힌 조합을 선택하는 것이 심리적인 안정감을 줄 수 있습니다.</p>
+            <ul>
+                <li><strong>홀짝 비율:</strong> 홀수와 짝수가 3:3 또는 2:4 비율로 섞이는 것이 일반적입니다.</li>
+                <li><strong>고저 비율:</strong> 1~22(저)와 23~45(고) 사이의 숫자를 적절히 배분하세요.</li>
+                <li><strong>총합의 법칙:</strong> 선택한 6개 숫자의 합이 보통 100~170 사이에 위치하는 경우가 많습니다.</li>
+            </ul>
+            <p>본 생성기는 완전한 무작위 알고리즘을 사용하여 공정한 번호 조합을 제공합니다.</p>
+        </article>
+
+        <hr class="divider">
         
-        <div class="contact-section">
-            <h2>Partnership Inquiry</h2>
+        <section class="contact-section">
+            <h2>제휴 및 문의</h2>
+            <p>비즈니스 제휴나 서비스 개선 제안은 아래 폼을 통해 보내주세요.</p>
             <form action="https://formspree.io/f/mdapnqno" method="POST" id="contact-form">
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="text" name="name" placeholder="이름" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="_replyto" placeholder="Email" required>
+                    <input type="email" name="_replyto" placeholder="이메일 주소" required>
                 </div>
                 <div class="form-group">
-                    <textarea name="message" placeholder="Message" required></textarea>
+                    <textarea name="message" placeholder="문의 내용을 입력하세요" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Inquiry</button>
+                <button type="submit" class="submit-btn">문의 보내기</button>
             </form>
-        </div>
+        </section>
 
         <hr class="divider">
 
-        <div id="disqus_thread"></div>
-        <script>
-            /**
-            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-            /*
-            var disqus_config = function () {
-            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            */
-            (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://productbuilder-dmu4qmkcep.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+        <section class="comments-section">
+            <h2>사용자 의견</h2>
+            <div id="disqus_thread"></div>
+            <script>
+                (function() {
+                var d = document, s = d.createElement('script');
+                s.src = 'https://productbuilder-dmu4qmkcep.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#privacy" onclick="alert('개인정보처리방침: 본 사이트는 사용자의 입력 데이터를 서버에 저장하지 않으며, 광고 및 분석 목적으로 쿠키를 사용할 수 있습니다.')">개인정보처리방침</a> | 
+            <a href="#terms" onclick="alert('이용약관: 본 서비스는 재미를 목적으로 하며, 생성된 번호로 인한 결과에 책임을 지지 않습니다.')">이용약관</a> | 
+            <a href="#disclaimer" onclick="alert('면책조항: 로또 구매는 만 19세 이상만 가능하며, 과도한 몰입은 해로울 수 있습니다.')">면책조항</a>
+        </div>
+        <p>&copy; 2026 LottoGen Project. All rights reserved.</p>
+    </footer>
+
     <script src="main.js"></script>
 </body>
 </html>
