@@ -245,11 +245,12 @@ input[type="number"] {
 .lotto-pattern-container {
     margin: 1.5rem auto;
     max-width: 350px;
-    padding: 1rem;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 1.5rem 1rem;
+    background: #fffdf5; /* 약간 노란빛 도는 종이 느낌 */
+    border: 2px solid #e0c9a6;
+    border-radius: 4px;
     position: relative;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
 }
 
 [data-theme="dark"] .lotto-pattern-container {
@@ -260,7 +261,7 @@ input[type="number"] {
 .lotto-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+    gap: 6px;
     position: relative;
     z-index: 1;
 }
@@ -270,23 +271,45 @@ input[type="number"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    color: #ccc;
-    border: 1px solid #eee;
-    border-radius: 4px;
+    font-size: 0.75rem;
+    color: #cc0000; /* 실제 용지 느낌의 빨간색 */
+    border: 1px solid #ffcccc;
+    border-radius: 2px;
+    background: transparent;
+    font-weight: 500;
 }
 
 [data-theme="dark"] .grid-cell {
-    color: #555;
-    border-color: #3d3d3d;
+    color: #ff6666;
+    border-color: #553333;
 }
 
 .grid-cell.marked {
-    background-color: var(--primary-color);
-    color: #fff;
-    border-color: var(--primary-color);
+    background-color: #333; /* 컴퓨터용 싸인펜 느낌 */
+    color: #333; /* 숫자를 가려서 마킹 느낌 극대화 */
+    border-color: #333;
+    position: relative;
     z-index: 2;
-    font-weight: bold;
+}
+
+/* 마킹된 곳에 수직선 느낌 추가 */
+.grid-cell.marked::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    background: #000;
+    border-radius: 1px;
+}
+
+[data-theme="dark"] .grid-cell.marked {
+    background-color: #fff;
+    color: #fff;
+    border-color: #fff;
+}
+
+[data-theme="dark"] .grid-cell.marked::after {
+    background: #000;
 }
 
 .pattern-svg {
@@ -296,23 +319,35 @@ input[type="number"] {
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3; /* 마킹보다 위에 선이 오도록 */
 }
 
 .pattern-line {
     fill: none;
-    stroke: var(--primary-color);
-    stroke-width: 2;
+    stroke: #4a90e2;
+    stroke-width: 2.5;
     stroke-linecap: round;
     stroke-linejoin: round;
-    opacity: 0.5;
+    opacity: 0.6;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 1.5s ease forwards;
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
 .set-title {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     color: var(--primary-color);
+    text-align: left;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 0.5rem;
 }
 
 .disclaimer-text {

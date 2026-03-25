@@ -59,6 +59,14 @@ function displayLottoSet(numbers, delay) {
     wrapper.style.transition = 'all 0.5s ease';
     wrapper.style.marginBottom = '3rem';
 
+    // 세트 라벨 추가 (A, B, C, D, E...)
+    const setIndex = resultsContainer.children.length;
+    const label = String.fromCharCode(65 + (setIndex % 26));
+    const title = document.createElement('div');
+    title.classList.add('set-title');
+    title.textContent = `세트 ${label}`;
+    wrapper.appendChild(title);
+
     // 1. 숫자 공 표시
     const ballsElement = document.createElement('div');
     ballsElement.classList.add('lotto-set');
@@ -75,7 +83,7 @@ function displayLottoSet(numbers, delay) {
     });
     wrapper.appendChild(ballsElement);
 
-    // 2. 패턴 그리드 표시
+    // 2. 패턴 그리드 표시 (실제 용지 스타일)
     const patternContainer = document.createElement('div');
     patternContainer.classList.add('lotto-pattern-container');
     
@@ -86,8 +94,6 @@ function displayLottoSet(numbers, delay) {
     svg.classList.add('pattern-svg');
     const polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
     polyline.classList.add('pattern-line');
-    
-    let points = "";
     
     // 1~45 그리드 셀 생성
     for (let i = 1; i <= 45; i++) {
@@ -111,6 +117,7 @@ function displayLottoSet(numbers, delay) {
         
         const markedCells = grid.querySelectorAll('.marked');
         const containerRect = grid.getBoundingClientRect();
+        let points = "";
         
         markedCells.forEach(cell => {
             const rect = cell.getBoundingClientRect();
@@ -121,5 +128,5 @@ function displayLottoSet(numbers, delay) {
         
         polyline.setAttribute("points", points.trim());
         svg.appendChild(polyline);
-    }, delay);
+    }, delay + 100);
 }
