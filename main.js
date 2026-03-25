@@ -62,6 +62,20 @@ function displayLottoSet(numbers, delay) {
     numbers.forEach(number => {
         const numberElement = document.createElement('div');
         numberElement.classList.add('lotto-number');
+        
+        // 번호 대역별 클래스 추가
+        if (number <= 10) {
+            numberElement.classList.add('ball-1-10');
+        } else if (number <= 20) {
+            numberElement.classList.add('ball-11-20');
+        } else if (number <= 30) {
+            numberElement.classList.add('ball-21-30');
+        } else if (number <= 40) {
+            numberElement.classList.add('ball-31-40');
+        } else {
+            numberElement.classList.add('ball-41-45');
+        }
+
         numberElement.textContent = number;
         setElement.appendChild(numberElement);
     });

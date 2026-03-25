@@ -140,7 +140,7 @@ input[type="number"] {
 
 .lotto-number {
     background-color: var(--number-bg);
-    color: var(--text-color);
+    color: white; /* 공통 글자색 흰색으로 변경 */
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -150,9 +150,17 @@ input[type="number"] {
     margin: 0.25rem;
     font-weight: bold;
     font-size: 1.2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+/* 로또 번호 대역별 색상 */
+.ball-1-10 { background-color: #fbc400; color: #fff; }
+.ball-11-20 { background-color: #69c8f2; color: #fff; }
+.ball-21-30 { background-color: #ff7272; color: #fff; }
+.ball-31-40 { background-color: #aaaaaa; color: #fff; }
+.ball-41-45 { background-color: #b0d840; color: #fff; }
 
 .divider {
     margin: 3rem 0;
